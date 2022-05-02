@@ -10,10 +10,8 @@ class DLinkedList:
         self.tail = self.head
         self.size = 1
         self.current = 1
-        self.history_list = ["www.hufs.ac.kr"]
     
     def append(self, e):
-        self.history_list.append(e)
         if self.head == None:
             self.head = DNode(e)
             self.tail = self.head
