@@ -1,0 +1,48 @@
+class DNode:
+    def __init__(self, e):
+        self.data = e
+        self.next = None
+        self.prev = None
+
+class DLinkedList:
+    def __init__(self, data):
+        self.head = DNode(data)
+        self.tail = self.head
+        self.size = 1
+        self.current = 1
+        self.history_list = ["www.hufs.ac.kr"]
+    
+    def append(self, e):
+        self.history_list.append(e)
+        if self.head == None:
+            self.head = DNode(e)
+            self.tail = self.head
+        else:
+            node = self.head
+            while node.next:
+                node = node.next
+            new = DNode(e)
+            node.next = new
+            new.prev = node
+            self.tail = new
+    def getNode(self, pos):
+        if pos < 0:
+            return None
+        node = self.head
+        while pos>0 :
+            node = node.next
+            pos-=1
+        return node
+    
+    def getEntry(self,pos):
+        node = self.getNode(pos)
+        if node == None: return
+        else: return node.data
+        
+    def pop(self):
+        if self.head is None:
+            raise IndexError('LinkedList is empty')
+        item = self.tail.data
+        self.tail = self.tail.prev
+        self.tail.next = None
+        return
